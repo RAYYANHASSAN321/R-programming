@@ -126,3 +126,92 @@ ggplot(data, aes(x = months, y = Revenue, group = 1)) +
   geom_line(color = "red", size = 1.2) +
   geom_point(color = "black", size = 3) +
   labs(title = "Revenue by Month", x = "Months", y = "Revenue")
+
+
+
+
+data1 <- data.frame(
+  
+  Months = as.Date(c("2024-01-01" ,"2024-02-02" , "2024-03-03" , "2024-04-04" , "2024-05-05" )),
+  Sales = c(340 , 670 , 220 , 450 , 100)
+  
+)
+
+install.packages("ggplot2")
+
+library(ggplot2)
+
+ggplot(data1 , aes(x = Months , y = Sales , group = 1)) +
+  geom_line(color = "purple") +
+  geom_point(color = "black") +
+  labs(title = "Monthly Sales record" , x = "Months" , y= "Sales")
+
+
+Months = c("Jan", "Feb" , "March" , "Apr" , "May" , "Jun")
+North_Sales = c(120 , 450 , 349 , 180 , 220 , 250)
+South_Sales = c(710 , 253 , 602 , 900 , 660 , 525)
+
+
+x <- 1:length(Months)
+
+plot(x , North_Sales , type = "o" , col = "lightblue" ,
+     pch = 16 , lty = 1 , ylab = "Sales" , xlab = "Months" ,
+     main = "Sales Comparison" , xaxt = "n" , ylim = c(100 , 900))
+
+axis(1 , x , labels = Months)
+
+lines(x , South_Sales , type = "o" , col = "orange" , pch = 17 , lty =2)
+
+
+legend("topleft" , legend = c("North" , "South") , col = c("lightblue" , "orange"),
+       lty = c(1 , 2) , pch = c(16 , 17)
+)
+
+
+df <- data.frame(
+  Months = c("Jan", "Feb" , "March" , "Apr" , "May" , "Jun"),
+  Sales = c(120 , 450 , 349 , 180 , 220 , 250 , 710 , 253 , 602 , 900 , 660 , 525),
+  Region = rep(c("North" , "South") , each = 6)
+  
+)
+
+ggplot(df , aes(x = Months , y =Sales , color = Region , group = Region)) +
+  geom_line(size = 1.3) + geom_point(size = 3)+ labs(title = "Sales Comparison")
+
+
+ggplot(df , aes(x = Months , y =Sales , color = Region , group = Region)) +
+  geom_line(size = 1.3) + geom_point(size = 3)+ labs(title = "Sales Comparison")+
+  scale_color_manual(values = c("North" = "green" , "South" = "blue"))
+
+
+
+
+  hours = c(1, 2, 3, 4, 5, 6, 7, 8)
+marks = c(38, 46, 55, 67, 74, 83, 90, 99)
+
+plot(
+  hours, marks,
+  main = "Study hours v/s marks",
+  xlab = "Hours studied",
+  ylab = "marks",
+  pch = 16,
+  cex = 1.5,
+  xlim = c(0, 10),
+  ylim = c(30, 100)
+)
+
+model = lm(marks ~ hours)
+
+plot(hours, marks, pch = 16, col = "blue")
+abline(model, col = "red", lwd = 2)
+
+
+library(ggplot2)
+
+df = data.frame(
+  hours = c(1, 2, 3, 4, 5, 6, 7, 8),
+  marks = c(38, 46, 55, 67, 74, 83, 90, 99)
+)
+
+ggplot(df, aes(x = hours, y = marks)) +
+  geom_point(color = "darkgreen", size = 3)
