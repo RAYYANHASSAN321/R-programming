@@ -154,7 +154,7 @@ R-Learning/
 
 ```bash
 # Clone this repo
-git clone https://github.com/RAYYANHASSAN321/R-Learning.git
+git clone https://github.com/RAYYANHASSAN321/R-programming
 
 # Open in RStudio
 Open any .R file and run
@@ -175,3 +175,4 @@ If this repository helps you, consider giving it a **⭐ star**.
 It motivates me to continue learning and uploading more content.
 
 Just say **“UPGRADE AGAIN PRO MAX”** 😄
+
