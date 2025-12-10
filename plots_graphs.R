@@ -1,0 +1,65 @@
+hours = c(1 ,2 ,3 , 4 , 5 , 6 , 7 ,8 )
+marks = c(38 , 46 , 55 , 67 , 74 , 83 , 90 , 99)
+grade = c("F" , "F" , "B" , "B" , "B" , "A" , "A" , "A")
+
+col_map = c("F" = "red" , "B" = "yellow" , "A" = "green")
+
+plot(hours , marks , col = col_map[grade],
+     pch = 19 , main ="hour vs marks (color by grade)",
+     xlab = "Hours", ylab = "Marks"
+     
+)
+legend("topleft" , legend = c("A" , "B" , "F") , 
+       col = c("green" , "yellow" , "red") , pch= 19)
+
+income = c(10000 , 34000 , 25000 , 75000 , 50000)
+spending = c(8900 , 27000 , 18900 , 56300 , 41000)
+population = c(20 , 40 , 30 , 50 , 60)
+
+plot(income , spending , pch = 21, bg = "lightblue" , col = "black",
+     cex = population / 50,
+     main = "Population size chart",
+     xlab = "Income" , ylab = "Spendings"
+)
+
+library(ggplot2)
+df = data.frame(
+  
+  hours = c(1 ,2 ,3 , 4 , 5 , 6 , 7 ,8 ),
+  marks = c(38 , 46 , 55 , 67 , 74 , 83 , 90 , 99),
+  success_percent = c(30 , 45 , 50 , 60 , 68 , 75 , 85 , 94)
+)
+
+ggplot(df , aes(hours , marks , color = success_percent,
+                size = success_percent / 10 ))+
+  geom_point()+
+  geom_smooth(method = "lm" , se = "FALSE")
+
+
+
+#-------------------------Bar chart---------------------------#
+clubs <- c("Sports" , "Music" , "Science" , "Arts")
+members <- c(256 , 120 , 250 , 190)
+
+barplot(members , names.arg = clubs , col = "lightblue",
+        main = "Stu membership ratio" , xlab = "Clubs",
+        ylab = "Members"
+)
+
+barplot(members , names.arg = clubs , col = "yellow",
+        main = "Stu membership ratio" , xlab = "Clubs",
+        ylab = "Members" , border = "blue" , ylim = c(0, 300)
+)
+
+barplot(members , names.arg = clubs , col = "yellow",
+        main = "Stu membership ratio" , xlab = "Clubs",
+        ylab = "Members" , border = "blue",
+        horiz = TRUE
+)
+
+bar_position <- barplot(members , names.arg = clubs , col = "yellow",
+                        main = "Stu membership ratio" , xlab = "Clubs",
+                        ylab = "Members" , border = "blue" , ylim = c(0, 300)
+)
+
+text(x = bar_position , y = members , label = members , pos = 1)
