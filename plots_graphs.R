@@ -63,3 +63,40 @@ bar_position <- barplot(members , names.arg = clubs , col = "yellow",
 )
 
 text(x = bar_position , y = members , label = members , pos = 1)
+
+
+#-----------------ggplot2------------------#
+library(ggplot2)
+
+df <- data.frame(
+  clubs = c("Sports", "Music", "Science", "Arts"),
+  members = c(256, 120, 250, 190)
+)
+
+ggplot(df, aes(x = clubs, y = members, fill = clubs)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Clubs membership", x = "Club", y = "Member")
+
+#-----------------percentage------------------#
+clubs <- c("Sports", "Music", "Science", "Arts")
+members <- c(256, 120, 250, 190)
+
+percent <- round(members / sum(members) * 100, 1)
+
+bp <- barplot(members, names.arg = clubs, col = "lightblue",
+              ylim = c(0, 300), main = "Clubs membership")
+
+text(bp, members + 3, paste(percent, "%"))
+
+#-----------------ordered form------------------#
+ordered <- order(members, decreasing = FALSE)
+
+barplot(members[ordered], names.arg = clubs[ordered], col = 'orange',
+        ylim = c(0, 300), main = "Clubs membership")
+
+#-----------------min max value ------------ #
+highlighted <- ifelse(members == max(members) , "green" ,
+                      ifelse(members == min(members) , "red" , "lightblue"))
+
+barplot(members , names.arg = clubs , col = highlighted ,
+        ylim = c(0 , 300) , main = "Clubs membership")
