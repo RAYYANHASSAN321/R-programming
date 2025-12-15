@@ -100,3 +100,65 @@ highlighted <- ifelse(members == max(members) , "green" ,
 
 barplot(members , names.arg = clubs , col = highlighted ,
         ylim = c(0 , 300) , main = "Clubs membership")
+
+
+
+#-----------------grouped barchart------------------#
+clubs <- c("Sports", "Music", "Science", "Arts")
+members_2024 <- c(256, 120, 250, 190)
+members_2025 <- c(412, 315, 290, 367)
+
+data <- rbind(members_2024, members_2025)
+
+barplot(data, beside = TRUE, names.arg = clubs, col = c("orange", "lightblue"),
+        main = "Clubs membership Comparison"
+)
+
+legend("topleft", legend = c("2024", "2025"),
+       fill = c("orange", "lightblue")
+)
+
+#-----------------stacked barchart------------------#
+bp <- barplot(data, names.arg = clubs, col = c("pink", "lightgreen"),
+)
+
+totals <- colSums(data)
+
+text(bp, totals + 3, totals)
+
+legend("topleft", legend = c("2024", "2025"),
+       fill = c("pink", "lightgreen")
+)
+
+
+# ----------Histogram---------- #
+marks <- c(67, 90, 34, 87, 56, 75, 69, 50, 92, 84)
+
+hist(marks, 
+     main = "Distribution of marks", 
+     xlab = "Mark", 
+     ylab = "No. of Students", 
+     border = "white", 
+     col = "green", 
+     breaks = 10)
+
+grid()
+rug(marks)
+
+library(ggplot2)
+
+df <- data.frame(
+  marks = c(67, 90, 34, 87, 56, 75, 69, 50, 92, 84)
+)
+
+ggplot(df, aes(x = marks)) +
+  geom_histogram(
+    fill = "lightblue",
+    color = "black",
+    binwidth = 8
+  ) +
+  labs(
+    title = "Marks frequency",
+    x = "Marks",
+    y = "No. of students"
+  )
