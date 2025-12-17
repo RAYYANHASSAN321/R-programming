@@ -162,3 +162,57 @@ ggplot(df, aes(x = marks)) +
     x = "Marks",
     y = "No. of students"
   )
+
+
+
+#---------attendance distribution---------#
+attendance <- c(62 , 75 , 80 , 55 , 90 , 85 , 70 , 60 ,78, 88,
+                92 , 66 , 73 , 58 ,61 ,82 , 84 , 69 , 77 ,91
+)
+
+hist( attendance ,
+      breaks = c(50 , 60 , 70 , 80 , 90 , 100),
+      col = "orange",
+      border = "black",
+      main = "Attendance distribution",
+      xlab = "Attendance Percentage",
+      ylab = "Number of student"
+)
+
+#-----------Probability Density-----------#
+
+hist( attendance ,
+      probability = TRUE,
+      col = "lightgreen",
+      border = "black",
+      main = "Attendance Density Histogram",
+      xlab = "Attendance Percentage",
+      ylab = "Number of student"
+)
+
+lines(density(attendance) , col = "red" , lwd = 2)
+
+#--------- Mean median lines -----------#
+
+hist( attendance ,
+      probability = TRUE,
+      col = "lightblue",
+      border = "black",
+      main = "Attendance with Mean and Medain ratio",
+      xlab = "Attendance Percentage"
+)
+
+abline(v = mean(attendance), col = "red", lwd = 2)
+abline(v = median(attendance) , col = "green" , lwd = 2)
+
+
+# ---------Comparison of two classes-----------
+class_A <- c(62 , 75 , 80 , 55 , 90 , 85 , 70 , 60 ,78, 88)
+class_B <- c(92 , 66 , 73 , 58 ,61 ,82 , 84 , 69 , 77 ,91)
+
+par(mfrow = c(1 , 2))
+
+hist(class_A , col = "lightblue" , main = "class A attendance")
+hist(class_A , col = "lightgreen" , main = "class B attendance")
+
+par(mfrow = c(1 , 1))
