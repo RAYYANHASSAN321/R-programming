@@ -216,3 +216,35 @@ hist(class_A , col = "lightblue" , main = "class A attendance")
 hist(class_A , col = "lightgreen" , main = "class B attendance")
 
 par(mfrow = c(1 , 1))
+
+
+
+library(ggplot2)
+
+df2 <- data.frame(attendance)
+
+ggplot(df2, aes(x = attendance)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 fill = "lightblue",
+                 color = "black",
+                 binwidth = 5) +
+  geom_density(color = "red", linewidth = 1) +
+  labs(title = "Attendance Distribution with Density",
+       x = "Attendance %", y = "Density"
+  )
+
+
+attendance <- c(62, 75, 80, 55, 90, 85, 70, 60, 78, 88,
+                92, 66, 73, 58, 61, 82, 84, 69, 77, 91)
+
+groups <- c(rep("Section_A", 10), rep("Section_B", 10))
+attend <- c(attendance[1:10], attendance[11:20])
+
+df <- data.frame(attend, groups)
+
+ggplot(df, aes(attend)) +
+  geom_histogram(fill = "lightblue", color = "black", binwidth = 5) +
+  facet_wrap(~groups) +
+  labs(title = "Attendance by sections",
+       x = "Attendance", y = "Sections"
+  )
