@@ -57,7 +57,7 @@ pie(expenses, main = "Monthly budget breakdown",
     border = "white", labels = label
 )
 
-# --- Donut Chart ---
+# --- Donuts Chart ---
 pie(expenses, col = rainbow(length(expenses)),
     main = "Donut chart"
 )
